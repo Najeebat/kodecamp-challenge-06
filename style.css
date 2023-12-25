@@ -77,7 +77,6 @@ html, body {
 
   .gold-button {
     padding: 20px 30px;
-    margin-top: 150px;
     /* margin-right: 150px; */
     background-color: rgb(255, 215, 0);
     color: #fff;
@@ -90,6 +89,13 @@ html, body {
     /* box-shadow: 10px 2px 25px rgb(255, 215, 0);   */
   }
   
+  @media (max-width: 768px) {
+    .gold-button{
+      margin-left: 110px !important;
+      margin-top: -50px;
+    }
+  }
+
   .gold-button:before, 
   .gold-button:after {
     position: absolute;
