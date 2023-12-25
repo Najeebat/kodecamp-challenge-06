@@ -1,0 +1,177 @@
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #161616;
+  overflow: hidden;
+  /* transform: scale(1.5); */
+}
+
+/* button */
+.btn {
+  margin: 100px;
+  padding: 20px 50px;
+  border: none;
+  outline: none;
+  color: #FFF;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 12px;
+}
+.btn::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+/* glow */
+.btn::before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #FF0000, #FF7300, #FFFB00, #48FF00,
+    #00FFD5, #002BFF, #FF00C8, #FF0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height:  calc(100% + 4px);
+  filter: blur(8px);
+  animation: glowing 20s linear infinite;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+@keyframes glowing {
+  0% {background-position: 0 0;}
+  50% {background-position: 400% 0;}
+  100% {background-position: 0 0;}
+}
+
+/* hover */
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn:active:after {
+  background: transparent;
+}
+
+.btn:active {
+  color: #000;
+  font-weight: bold;
+}
+
+
+/* green button */
+
+  .gold-button {
+    padding: 20px 30px;
+    margin-top: 150px;
+    /* margin-right: 150px; */
+    background-color: rgb(255, 215, 0);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 8px;
+    border:none;
+    cursor: pointer;
+    position:relative;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    /* box-shadow: 10px 2px 25px rgb(255, 215, 0);   */
+  }
+  
+  .gold-button:before, 
+  .gold-button:after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 140%;
+    height: 100%;
+    left:-20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+  } 
+  
+  .gold-button:before,
+  .gold-button:after
+   {
+    display: none;
+    background-image: 
+      radial-gradient(circle, rgb(255, 215, 0) 20%, transparent 20%),
+      radial-gradient(circle, transparent 20%, rgb(255, 215, 0) 20%, transparent 30%),
+      radial-gradient(circle, rgb(255, 215, 0) 20%, transparent 20%),
+      radial-gradient(circle, rgb(255, 215, 0) 20%, transparent 20%),
+      radial-gradient(circle, transparent 10%, rgb(255, 215, 0) 15%, transparent 20%),
+      radial-gradient(circle, rgb(255, 215, 0) 20%, transparent 20%),
+      radial-gradient(circle, rgb(255, 215, 0) 20%, transparent 20%),
+      radial-gradient(circle, rgb(255, 215, 0) 20%, transparent 20%),
+      radial-gradient(circle, rgb(255, 215, 0) 20%, transparent 20%);
+    background-size: 20% 20%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+      20% 20%, 18% 18%;
+  }
+  
+  .gold-button:before {
+    top: -75%;
+  }
+  .gold-button:after {
+    bottom: -75%;
+  }
+  
+  .gold-button:active {
+    transform: scale(0.9);
+    background-color: rgba(255, 215, 0);
+    box-shadow: 0 2px 25px 0 rgba(255, 215, 0);
+  }
+  
+  .gold-button.animate:before {
+    display: block;
+    animation: goldtopBubbles ease-in-out 1.75s forwards;
+  }
+  
+  .gold-button.animate:after {
+    display: block;
+    animation: goldbottomBubbles ease-in-out 0.75s forwards;
+  }
+  
+  @keyframes goldtopBubbles {
+    0% {
+      background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+        40% 90%, 55% 90%, 70% 90%;
+    }
+    50% {
+      background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+        50% 50%, 65% 20%, 90% 30%;
+    }
+    100% {
+      background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+        50% 40%, 65% 10%, 90% 20%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+  }
+  
+  @keyframes goldbottomBubbles {
+    0% {
+      background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+        70% -10%, 70% 0%;
+    }
+    50% {
+      background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+        105% 0%;
+    }
+    100% {
+      background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+        110% 10%;
+      background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+  }
